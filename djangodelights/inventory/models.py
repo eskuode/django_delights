@@ -15,7 +15,7 @@ class Ingredient(models.Model):
         (OTHER, "other")
     ]
     name = models.CharField(max_length=30)
-    quantity = models.FloatFiel(default = 0.0)
+    quantity = models.FloatField(default = 0.0)
     unit = models.CharField(max_length=2, choices=UNIT_TYPE_CHOICES, default=OTHER)
     unit_price = models.FloatField(default=0.0)
 
