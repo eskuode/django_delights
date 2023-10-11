@@ -2,9 +2,22 @@ from django.db import models
 
 #models
 class Ingredient(models.Model):
-    ingredient_name = models.CharField(max_length=30)
-    available_quantity = models.IntegerFiel(default = 0)
-    price_per_unit = models.FloatField(default=0.0)
+    TBSP = "TB"
+    TSP = "TS"
+    ML = "ML"
+    G = "G"
+    OTHER = "OT"
+    UNIT_TYPE_CHOICES = [
+        (TBSP, "tbsp"),
+        (TSP, "tsp"),
+        (ML, "mL"),
+        (G, "g"),
+        (OTHER, "other")
+    ]
+    name = models.CharField(max_length=30)
+    quantity = models.IntegerFiel(default = 0)
+    unit = models.CharField(max_length=2, choices=UNIT_TYPE_CHOICES, default=OTHER)
+    unit_price = models.FloatField(default=0.0)
 
 class MenuItem(models.Model):
     menu_item = models.CharField(max_length=50)
