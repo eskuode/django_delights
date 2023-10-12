@@ -20,7 +20,7 @@ class Ingredient(models.Model):
     unit_price = models.FloatField(default=0.0)
 
     def __str__(self):
-        return self.name + "-" + self.quantity
+        return self.name 
 
 class MenuItem(models.Model):
     title = models.CharField(max_length=50)
@@ -42,4 +42,4 @@ class Purchase(models.Model):
     timestamp = models.DateTimeField()
 
     def __str__(self):
-        return self.menu_item + " " + self.timestamp
+        return self.menu_item + " " + self.timestamp   
