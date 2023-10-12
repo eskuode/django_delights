@@ -19,15 +19,27 @@ class Ingredient(models.Model):
     unit = models.CharField(max_length=2, choices=UNIT_TYPE_CHOICES, default=OTHER)
     unit_price = models.FloatField(default=0.0)
 
+    def __str__(self):
+        return self.name + "-" + self.quantity
+
 class MenuItem(models.Model):
     title = models.CharField(max_length=50)
     price = models.FloatField(default=0.0)
 
+    def __str__(self):
+        return self.title + " " + self.price
+    
 class RecipeRequirement(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     quantity = models.FloatField(default=0.0)
 
+    def __str__(self):
+        return self.menu_item + ", " + self.ingredient
+
 class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
     timestamp = models.DateTimeField()
+
+    def __str__(self):
+        return self.menu_item + " " + self.timestamp
