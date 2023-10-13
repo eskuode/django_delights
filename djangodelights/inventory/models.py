@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 #models
 class Ingredient(models.Model):
@@ -39,7 +40,7 @@ class RecipeRequirement(models.Model):
 
 class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(default=datetime.now(), blank=True)
 
     def __str__(self):
         return self.menu_item.title + " " + str(self.timestamp)   
