@@ -42,4 +42,4 @@ class Purchase(models.Model):
     timestamp = models.DateTimeField()
 
     def __str__(self):
-        return self.menu_item + " " + self.timestamp   
+        return self.menu_item.title + " " + self.timestamp   
