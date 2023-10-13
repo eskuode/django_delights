@@ -35,7 +35,7 @@ class RecipeRequirement(models.Model):
     quantity = models.FloatField(default=0.0)
 
     def __str__(self):
-        return self.menu_item.title 
+        return self.menu_item.title + " " + self.ingredient.name
 
 class Purchase(models.Model):
     menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
