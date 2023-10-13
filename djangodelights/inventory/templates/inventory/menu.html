@@ -1,0 +1,20 @@
+{% extends 'inventory/base.html' %} {% block content %}
+<h2>Menu</h2>
+<table>
+  <tr>
+    <th>Desserts</th>
+    <th>Price</th>
+  </tr>
+  {% for dessert in MenuItem %}
+  <tr>
+    <th>
+      <dl>
+        <dt>{{ MenuItem.title}}</dt>
+        <dd>{{ RecipeRequirenmet.ingredient }}</dd>
+      </dl>
+    </th>
+    <th>{{ MenuItem.price }}</th>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

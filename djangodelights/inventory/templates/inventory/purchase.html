@@ -1,0 +1,15 @@
+{% extends 'inventory/base.html' %} {% block content %}
+<h2>Menu selection</h2>
+<table>
+  <tr>
+    <th>Menu Item</th>
+    <th>Time purchased</th>
+  </tr>
+  {% for dessert in MenuItem %}
+  <tr>
+    <td>{{ MenuItem.title }}</td>
+    <td>{{ MenuItem.timestamp }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
