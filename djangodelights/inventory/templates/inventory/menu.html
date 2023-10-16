@@ -7,13 +7,13 @@
   </tr>
   {% for dessert in MenuItem %}
   <tr>
-    <th>
+    <td>
       <dl>
         <dt>{{ MenuItem.title}}</dt>
         <dd>{{ RecipeRequirenmet.ingredient }}</dd>
       </dl>
-    </th>
-    <th>{{ MenuItem.price }}</th>
+    </td>
+    <td>{{ MenuItem.price }}</td>
   </tr>
   {% endfor %}
 </table>
