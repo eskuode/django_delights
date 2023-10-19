@@ -8,17 +8,20 @@
         </tr>
     </thead>
     <tbody>
-        {% for item in recipes %}
+        {% for item in menu %}
                 <tr>
                     <td>
                         <dl>
-                            <dt>{{ item.quantity }}</dt>
-                            <dd></dd>
+                            <dt>{{ item.title }}</dt>
+                            <dd>
+                                {% for recipe in object_list %}{{ recipe.ingredient.name }}, {% endfor %}
+                            </dd>
                         </dl>
                     </td>
-                    <td></td>
+                    <td>{{ item.price }}</td>
                 </tr>  
         {% endfor %}
+        <p></p>
     </tbody>
 </table>
 {% endblock %}

@@ -25,7 +25,7 @@ class IngredientView(ListView):
     
 class MenuView(ListView):
     model = MenuItem
-    template_name = "inventory/menu.html"
+    template_name = "inventory/home.html"
     def get_context_data(self):
        context = super().get_context_data()
        context["menu"] = MenuItem.objects.all()
