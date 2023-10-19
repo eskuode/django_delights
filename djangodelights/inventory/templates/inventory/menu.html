@@ -1,1 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h2>Menu</h2>
+<table>
+    <thead
+        <tr>
+            <th>Dessert</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in recipes %}
+                <tr>
+                    <td>
+                        <dl>
+                            <dt>{{ item.quantity }}</dt>
+                            <dd></dd>
+                        </dl>
+                    </td>
+                    <td></td>
+                </tr>  
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
