@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Igredients Inventory</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Ingredient</th>
+      <th>Quantity</th>
+      <th>Unit</th>
+      <th>Price per unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ingr in ingredients %}
+    <tr>
+      <td>{{ ingr.name }}</td>
+      <td>{{ ingr.quantity }}</td>
+      <td>{{ ingr.unit }}</td>
+      <td>{{ ingr.unit_price }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

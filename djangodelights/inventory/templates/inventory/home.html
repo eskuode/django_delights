@@ -1,16 +1,6 @@
-{% extends 'base.html' %} {% block head %} {% endblock %}
+{% extends 'base.html' %} {% block content %}
 
-<header>
-  <h1 class="title">Django Delights Caffe!</h1>
-
-  <nav class="navbar">
-    <a class="nav-item" href="{% url 'home' %}">Home</a>
-    <a class="nav-item" href="{% url 'ingredients' %}">Ingredients</a>
-    <a class="nav-item" href="{% url 'menu' %}">Menu</a>
-    <a class="nav-item" href="{% url 'purchases' %}">Purchases</a>
-    <a class="nav-item" href="{% url 'profit' %}">Revenue and Profit</a>
-  </nav>
-</header>
 <body>
-  <p>Welcome to another day of Django Delights Caffe shift!</p>
+  <h3>Welcome to another day of Django Delights Caffe shift!</h3>
 </body>
+{% endblock %}

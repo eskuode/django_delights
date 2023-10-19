@@ -17,17 +17,25 @@ class HomeView(TemplateView):
   
 class IngredientView(ListView):
     model = Ingredient
-    template = "inventory/ingredient.html"
-
+    template_name = "inventory/ingredients.html"
+    def get_context_data(self):
+       context = super().get_context_data()
+       context["ingredients"] = Ingredient.objects.all()
+       return context
+    
 class MenuView(ListView):
     model = MenuItem
     template = "inventory/menu.html"
 
 class RecipeView(ListView):
     model = RecipeRequirement
-    template = "inventory/recipes.html"
+    template_name = "inventory/recipes.html"
 
 class PurchaseView(ListView):
     model = Purchase
-    template = "inventory/purchases.html"
+    template_name = "inventory/purchases.html"
+    
+       
    
+class ProfitView(TemplateView):
+    template_name = "inventory/profit.html"

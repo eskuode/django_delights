@@ -2,6 +2,7 @@
 <head>
   {% block head %} {% endblock %}
 </head>
+<body>
 <header>
     <h1 class="title">Django Delights Caffe!</h1>
   
@@ -12,10 +13,8 @@
       <a class="nav-item" href="{% url 'purchases' %}">Purchases</a>
       <a class="nav-item" href="{% url 'profit' %}">Revenue and Profit</a>
     </nav>
-</header>
-<body>
-  <a href="{% url 'home' %}">Home</a>
-  <h1>Welcome to Django Delights Caffe!</h1>
-  {% block content %} {% endblock %}
+  </header>
 </body>
+{% block content %}
+{% endblock %}
 </html>
