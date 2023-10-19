@@ -25,7 +25,7 @@ class IngredientView(ListView):
     
 class MenuView(ListView):
     model = MenuItem
-    template_name = "inventory/home.html"
+    template_name = "inventory/menu.html"
     def get_context_data(self):
        context = super().get_context_data()
        context["menu"] = MenuItem.objects.all()
@@ -35,12 +35,13 @@ class RecipeView(ListView):
     model = RecipeRequirement
     template_name = "inventory/menu.html"
     def get_context_data(self):
-       context = super().get_context_data()
-       context["ingredients"] = Ingredient.objects.all()
-       context["menu"] = MenuItem.objects.all()
-       context["recipes"] = RecipeRequirement.objects.all()
-       return context
-
+        context = super().get_context_data()
+        context["ingredients"] = Ingredient.objects.all()
+        context["menu"] = MenuItem.objects.all()
+        context["recipes"] = RecipeRequirement.objects.all()
+        
+    
+    
 class PurchaseView(ListView):
     model = Purchase
     template_name = "inventory/purchases.html"

@@ -1,27 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 <h2>Menu</h2>
 <table>
-    <thead
-        <tr>
-            <th>Dessert</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in menu %}
-                <tr>
-                    <td>
-                        <dl>
-                            <dt>{{ item.title }}</dt>
-                            <dd>
-                                {% for recipe in object_list %}{{ recipe.ingredient.name }}, {% endfor %}
-                            </dd>
-                        </dl>
-                    </td>
-                    <td>{{ item.price }}</td>
-                </tr>  
-        {% endfor %}
-        <p></p>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Dessert</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in object_list %}
+    <tr>
+      <td>
+        <dl>
+          <dt>{{ item.title }}</dt>
+          <dd></dd>
+        </dl>
+      </td>
+      <td>{{ item.price }}</td>
+    </tr>
+    {% endfor %}
+    <p></p>
+  </tbody>
 </table>
 {% endblock %}
