@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
-from django.views.generic import ListView
+from django.views.generic import TemplateView, ListView
 
 # Create your views here.
 class HomeView(TemplateView):
-  template_name = "home.html"
+  template_name = "inventory/home.html"
 
   def get_context_data(self):
     context = super().get_context_data()
@@ -14,6 +14,7 @@ class HomeView(TemplateView):
     context["purchases"] = Purchase.objects.all()
     
     return context
+  
 class IngredientView(ListView):
     model = Ingredient
     template = "inventory/ingredient.html"
