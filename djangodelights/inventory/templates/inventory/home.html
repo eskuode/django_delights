@@ -1,4 +1,4 @@
-{% extends 'inventory/base.html' %} {% block head %} {% endblock %}
+{% extends 'base.html' %} {% block head %} {% endblock %}
 
 <header>
   <h1 class="title">Django Delights Caffe!</h1>
@@ -10,5 +10,7 @@
     <a class="nav-item" href="{% url 'purchases' %}">Purchases</a>
     <a class="nav-item" href="{% url 'profit' %}">Revenue and Profit</a>
   </nav>
-  <p>Welcome to another day of Django Delights Caffe shift!</p>
 </header>
+<body>
+  <p>Welcome to another day of Django Delights Caffe shift!</p>
+</body>
