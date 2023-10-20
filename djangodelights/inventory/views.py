@@ -39,14 +39,18 @@ class RecipeView(ListView):
         context["ingredients"] = Ingredient.objects.all()
         context["menu"] = MenuItem.objects.all()
         context["recipes"] = RecipeRequirement.objects.all()
+        return context
         
     
     
 class PurchaseView(ListView):
     model = Purchase
     template_name = "inventory/purchases.html"
+    def get_context_data(self):
+        context = super().get_context_data()
+        context["purchases"] = Purchase.objects.all()
     
-       
+        return context
    
 class ProfitView(TemplateView):
     template_name = "inventory/profit.html"

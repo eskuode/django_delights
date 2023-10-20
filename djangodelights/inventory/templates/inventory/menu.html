@@ -8,15 +8,17 @@
     </tr>
   </thead>
   <tbody>
-    {% for item in object_list %}
+    {% for menu_item in object_list %}
     <tr>
       <td>
         <dl>
-          <dt>{{ item.title }}</dt>
-          <dd></dd>
+          <dt>{{ menu_item.title }}</dt>
+          {% for recipe in menu_item.reciperequirement_set.all %}
+          <dd>{{ recipe.ingredient.name }}</dd>
+          {% endfor %}
         </dl>
       </td>
-      <td>{{ item.price }}</td>
+      <td>{{ menu_item.price }}</td>
     </tr>
     {% endfor %}
     <p></p>
