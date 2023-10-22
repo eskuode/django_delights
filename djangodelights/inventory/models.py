@@ -34,6 +34,9 @@ class RecipeRequirement(models.Model):
   quantity = models.FloatField(default=0.0)
   def __str__(self):
     return self.menu_item.title + ": " + self.ingredient.name + "/" + str(self.quantity)
+  @property
+  def cost(self):
+    return self.quantity * self.ingredient.unit_price
 
 
 class Purchase(models.Model):

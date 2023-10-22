@@ -1,1 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h2>Revenue and profit</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Dessert</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for menu_item in menu %}
+    <tr>
+      <td>{{ menu_item.title }}</td>
+      <td>{{ menu_item.price }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<table>
+  <tr>
+    <td>Revenue</td>
+    <td>{{ revenue|floatformat:2 }}</td>
+  </tr>
+  <tr>
+    <td>Total price</td>
+    <td>{{ total_cost|floatformat:2 }}</td>
+  </tr>
+  <tr>
+    <td>Profit</td>
+    <td>{{ profit|floatformat:2 }}</td>
+  </tr>
+</table>
+{% endblock %}
