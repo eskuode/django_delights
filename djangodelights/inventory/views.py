@@ -29,10 +29,7 @@ class MenuView(ListView):
     template_name = "inventory/menu.html"
     def get_context_data(self):
        context = super().get_context_data()
-       context["menu"] = MenuItem.objects.all()
-       for menu in MenuItem.objects.all():
-           recipe_cost = sum( menu.reciperequirement_set.get("cost"))   
-       context['recipe_cost'] = recipe_cost      
+       context["menu"] = MenuItem.objects.all()   
        return context
 
 class RecipeView(ListView):

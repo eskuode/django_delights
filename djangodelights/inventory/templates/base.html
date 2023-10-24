@@ -1,11 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}" />
+  <title>{% block title %}Django Delights Caffe{% endblock %}</title>
   {% block head %} {% endblock %}
 </head>
 <body>
 <header>
-    <h1 class="title">Django Delights Caffe!</h1>
-  
+<div class="logo">
+  <img src="{% static 'inventory/cup.png' %}" alt="logo" width="80px"/>
+  <h1>Django Delights Caffe!</h1>
+</div> 
     <nav class="navbar">
       <a class="nav-item" href="{% url 'home' %}">Home</a>
       <a class="nav-item" href="{% url 'ingredients' %}">Ingredients</a>

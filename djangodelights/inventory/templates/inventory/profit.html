@@ -1,33 +1,34 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Django Delights
+Caffe{% endblock %} {% block content %}
 <h2>Revenue and profit</h2>
 <table>
   <thead>
-    <tr>
+    <tr class="table-heading">
       <th>Dessert</th>
       <th>Price</th>
     </tr>
   </thead>
   <tbody>
     {% for menu_item in menu %}
-    <tr>
+    <tr class="table-content">
       <td>{{ menu_item.title }}</td>
       <td>{{ menu_item.price }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-<table>
+<table class="report">
   <tr>
-    <td>Revenue</td>
-    <td>{{ revenue|floatformat:2 }}</td>
+    <td class="report-metrix">Revenue</td>
+    <td id="revenue">{{ revenue|floatformat:2 }}</td>
   </tr>
   <tr>
-    <td>Total price</td>
-    <td>{{ total_cost|floatformat:2 }}</td>
+    <td class="report-metrix">Total price</td>
+    <td id="cost">{{ total_cost|floatformat:2 }}</td>
   </tr>
   <tr>
-    <td>Profit</td>
-    <td>{{ profit|floatformat:2 }}</td>
+    <td class="report-metrix">Profit</td>
+    <td id="profit">{{ profit|floatformat:2 }}</td>
   </tr>
 </table>
 {% endblock %}
