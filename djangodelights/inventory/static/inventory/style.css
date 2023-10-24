@@ -8,8 +8,9 @@ body {
 }
 
 .logo {
+  color: #708090;
+  font-size: 2.5em;
   font-style: italic;
-  font-weight: bold;
   text-shadow: 1px 1px 1px grey;
   text-align: center;
   padding: 10px;
@@ -18,11 +19,23 @@ body {
 
 .navbar {
   padding: 10px;
+  text-decoration: none;
 }
 
 .nav-item {
-  padding: 10px;
+  color: #708090;
+  padding: 5px;
   border: 1px;
+  border-style: solid;
   border-color: grey;
   border-radius: 5px;
+}
+
+table {
+  border: 1px;
+  border-color: #708090;
+}
+
+.table-heading {
+  padding: 10px;
 }
