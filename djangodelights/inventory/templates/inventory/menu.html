@@ -1,24 +1,25 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}{% block title %}Django Delights
+Caffe{% endblock %} {% block content %}
 <h2>Menu</h2>
 <table>
   <thead>
-    <tr>
+    <tr class="table-heading">
       <th>Dessert</th>
       <th>Price</th>
     </tr>
   </thead>
   <tbody>
     {% for menu_item in object_list %}
-    <tr>
+    <tr class="table-content">
       <td>
         <dl>
-          <dt>{{ menu_item.title }}</dt>
+          <dt class="dessert-name">{{ menu_item.title }}</dt>
           {% for recipe in menu_item.reciperequirement_set.all %}
           <dd>{{ recipe.ingredient.name }}</dd>
           {% endfor %}
         </dl>
       </td>
-      <td>{{ menu_item.price }}</td>
+      <td>£{{ menu_item.price }}</td>
     </tr>
     {% endfor %}
     <p></p>

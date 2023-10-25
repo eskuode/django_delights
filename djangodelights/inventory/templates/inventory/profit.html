@@ -12,7 +12,7 @@ Caffe{% endblock %} {% block content %}
     {% for menu_item in menu %}
     <tr class="table-content">
       <td>{{ menu_item.title }}</td>
-      <td>{{ menu_item.price }}</td>
+      <td>£{{ menu_item.price }}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -20,15 +20,15 @@ Caffe{% endblock %} {% block content %}
 <table class="report">
   <tr>
     <td class="report-metrix">Revenue</td>
-    <td id="revenue">{{ revenue|floatformat:2 }}</td>
+    <td id="revenue">£{{ revenue|floatformat:2 }}</td>
   </tr>
   <tr>
-    <td class="report-metrix">Total price</td>
-    <td id="cost">{{ total_cost|floatformat:2 }}</td>
+    <td class="report-metrix">Total cost</td>
+    <td id="cost">£{{ total_cost|floatformat:2 }}</td>
   </tr>
   <tr>
     <td class="report-metrix">Profit</td>
-    <td id="profit">{{ profit|floatformat:2 }}</td>
+    <td id="profit">£{{ profit|floatformat:2 }}</td>
   </tr>
 </table>
 {% endblock %}

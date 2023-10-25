@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Django Delights
 Caffe{% endblock %} {% block content %}
-<h3>Igredients Inventory</h3>
+<h2>Igredients Inventory</h2>
 <table>
-  <thead>
+  <thead class="table-heading">
     <tr>
       <th>Ingredient</th>
       <th>Quantity</th>
@@ -12,7 +12,7 @@ Caffe{% endblock %} {% block content %}
   </thead>
   <tbody>
     {% for ingr in ingredients %}
-    <tr>
+    <tr class="table-content">
       <td>{{ ingr.name }}</td>
       <td>{{ ingr.quantity }}</td>
       <td>{{ ingr.unit }}</td>

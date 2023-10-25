@@ -2,7 +2,25 @@
 Caffe{% endblock %} {% block content %}
 <body>
   <h3 class="greeting">
-    Welcome to another day of Django Delights Caffe shift!
+    Welcome to another day of Django Delights Caffe shift! Today we are serving:
   </h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Desserts and hot drinks</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for menu_item in menu %}
+      <tr>
+        <td>{{ menu_item.title }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </body>
 {% endblock %}

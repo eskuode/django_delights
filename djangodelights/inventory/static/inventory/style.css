@@ -3,7 +3,7 @@ body {
 }
 
 .logo img {
-  width: 45px;
+  width: 55px;
   background-color: lightgray;
 }
 
@@ -11,7 +11,7 @@ body {
   color: #708090;
   font-size: 2.5em;
   font-style: italic;
-  text-shadow: 1px 1px 1px grey;
+  text-shadow: 1px 1px 1px black;
   text-align: center;
   padding: 10px;
   background-color: lightgray;
@@ -29,13 +29,53 @@ body {
   border-style: solid;
   border-color: grey;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 table {
+  text-align: left;
   border: 1px;
+  border-style: solid;
+  border-color: #708090;
+  border-radius: 5px;
+  width: 95%;
+  margin: 10px;
+  padding: 5px;
+}
+
+thead {
+  font-size: 1.2em;
+  text-align: left;
+  padding: 10px;
+  border-style: solid;
   border-color: #708090;
 }
 
-.table-heading {
-  padding: 10px;
+tbody {
+  padding: 3px;
+}
+
+.dessert-name {
+  font-weight: bold;
+}
+
+dd {
+}
+
+.report {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#revenue {
+  text-align: right;
+}
+
+#cost {
+  color: red;
+  text-align: right;
+}
+#profit {
+  color: green;
+  text-align: right;
 }
