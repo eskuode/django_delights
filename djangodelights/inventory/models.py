@@ -17,12 +17,12 @@ class Ingredient(models.Model):
   ]
   name = models.CharField(max_length=50, verbose_name= "Ingredient")
   quantity = models.FloatField(default=0.0, verbose_name="Quantity")
-  unit = models.CharField(max_length=2, choices=UNIT_TYPE_CHOICES, default=OTHER, verbose_name="Units")
+  unit = models.CharField(max_length=10, choices=UNIT_TYPE_CHOICES, default=OTHER, verbose_name="Units")
   unit_price = models.FloatField(default=0.0, verbose_name="Price per unit")
   def __str__(self):
     return self.name +"-"+ str(self.quantity) +" "+ str(self.unit_price)+"/"+self.unit
   def get_absolute_url(self):
-    return "/inventory/"
+    return "/ingredients"
   
 class MenuItem(models.Model):
   title = models.CharField(max_length=50, verbose_name="Menu Item")
@@ -30,7 +30,7 @@ class MenuItem(models.Model):
   def __str__(self):
     return self.title + " " + str(self.price)
   def get_absolute_url(self):
-    return "/inventory/"
+    return "/menu"
   
 class RecipeRequirement(models.Model):
   menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE, verbose_name="Menu Item")
@@ -42,7 +42,7 @@ class RecipeRequirement(models.Model):
   def cost(self):
     return self.quantity * self.ingredient.unit_price
   def get_absolute_url(self):
-    return "/inventory/"
+    return "/menu"
 
 
 class Purchase(models.Model):
@@ -51,5 +51,5 @@ class Purchase(models.Model):
   def __str__(self):
     return self.menu_item.title + " " + str(self.timestamp)
   def get_absolute_url(self):
-    return "/inventory/"
+    return "/purchases"
 # Create your models here.

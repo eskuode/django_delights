@@ -9,8 +9,8 @@ from django.db.models import Sum
 class HomeView(TemplateView):
   template_name = "inventory/home.html"
 
-  def get_context_data(self):
-    context = super().get_context_data()
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
     context["ingredients"] = Ingredient.objects.all()
     context["menu"] = MenuItem.objects.all()
     context["recipes"] = RecipeRequirement.objects.all()
