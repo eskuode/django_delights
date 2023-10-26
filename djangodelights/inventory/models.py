@@ -3,17 +3,17 @@ from datetime import datetime
 
 # Create your models here.
 class Ingredient(models.Model):
-  OUNCE = "OC"
-  LBS = "LB"
-  GRAMS = "G"
-  EGGS = "EG"
-  OTHER = "OT"
+  OUNCE = "ounces"
+  LBS = "lbs"
+  GRAMS = "grams"
+  EGGS = "eggs"
+  OTHER = "other"
   UNIT_TYPE_CHOICES = [
-    (OUNCE, "ounces"),
-    (LBS, "lbs"),
-    (GRAMS, "grams"),
-    (EGGS, "eggs"),
-    (OTHER, "other")
+    (OUNCE, "OC"),
+    (LBS, "LB"),
+    (GRAMS, "G"),
+    (EGGS, "EG"),
+    (OTHER, "OT")
   ]
   name = models.CharField(max_length=50, verbose_name= "Ingredient")
   quantity = models.FloatField(default=0.0, verbose_name="Quantity")

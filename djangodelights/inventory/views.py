@@ -26,7 +26,7 @@ class IngredientView(ListView):
        context["ingredients"] = Ingredient.objects.all()
        return context
     
-class IngredientCreate(CreateView):
+class CreateIngredientView(CreateView):
     model = Ingredient
     form_class = IngredientCreateForm
     template_name = "inventory/add_ingredient.html"
@@ -44,7 +44,7 @@ class MenuView(ListView):
        context["menu"] = MenuItem.objects.all()   
        return context
     
-class MenuCreate(CreateView):
+class CreateMenuView(CreateView):
     model = MenuItem
     form_class = MenuItemCreateForm
     template_name = "inventory/add_menu.html"
@@ -59,7 +59,7 @@ class RecipeView(ListView):
         context["recipes"] = RecipeRequirement.objects.all()
         return context
     
-class RecipeCreate(CreateView):
+class CreateRecipeView(CreateView):
     model = RecipeRequirement
     form_class = RecipeRequirementCreateForm
     template_name = "inventory/add_recipe.html"
@@ -73,7 +73,7 @@ class PurchaseView(ListView):
         context["purchases"] = Purchase.objects.all()
         return context
    
-class PurchaseCreate(CreateView):
+class CreatePurchaseView(CreateView):
     model = Purchase
     form_class = PurchaseCreateForm
     template_name = "inventory/add_purchase.html"
