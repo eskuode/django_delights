@@ -1,6 +1,14 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Django Delights
 Caffe{% endblock %} {% block content %}
-<h2>Igredients Inventory</h2>
+<h2>
+  <img
+    src="{% static 'inventory/ingredients.png' %}"
+    alt="ingredient"
+    width="80px"
+    text-align="center"
+  />
+  Igredients Inventory
+</h2>
 <table>
   <thead>
     <tr class="table-heading">
@@ -12,7 +20,7 @@ Caffe{% endblock %} {% block content %}
     </tr>
   </thead>
   <tbody>
-    {% for ingr in ingredients %}
+    {% for ingr in ingredients|dictsort:"name" %}
     <tr class="table-content">
       <td>{{ ingr.name }}</td>
       <td>{{ ingr.quantity }}</td>

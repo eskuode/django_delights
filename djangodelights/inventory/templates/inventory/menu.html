@@ -1,10 +1,13 @@
 {% extends 'base.html' %} {% load static %}{% block title %}Django Delights
 Caffe{% endblock %} {% block content %}
-<h2>Menu</h2>
+<h2>
+  <img src="{% static 'inventory/menu.png' %}" alt="ingredient" width="80px" />
+  Menu
+</h2>
 <table>
   <thead>
     <tr class="table-heading">
-      <th>Dessert</th>
+      <th>Dessert and Hotdrinks</th>
       <th>Price</th>
     </tr>
   </thead>

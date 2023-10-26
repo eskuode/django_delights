@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from .forms import IngredientCreateForm, MenuItemCreateForm, RecipeRequirementCreateForm, PurchaseCreateForm
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView
-from django.db.models import Sum
+from django.db import transaction
+from django.db.models import Sum, F
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -77,6 +79,28 @@ class CreatePurchaseView(CreateView):
     model = Purchase
     form_class = PurchaseCreateForm
     template_name = "inventory/add_purchase.html"
+   
+    def post(self, request):
+        menu_item_id = request.POST["menu_item"]
+        menu_item = MenuItem.objects.get(pk=menu_item_id)
+        requirements = menu_item.reciperequirement_set
+        purchase = Purchase(menu_item=menu_item)
+
+        for requirement in requirements.all():
+            required_ingredient = requirement.ingredient
+            required_ingredient.quantity -= requirement.quantity
+            required_ingredient.save()
+
+        purchase.save()
+        return redirect("/purchases/list")
+
+
+    
+
+        
+        
+
+        
 
 class ProfitView(TemplateView):
     template_name = "inventory/profit.html"
@@ -96,12 +120,6 @@ class ProfitView(TemplateView):
         context["total_cost"] = total_cost
         context["profit"] = revenue - total_cost
     
-     
-        
-
-
-      
-
         return context
     
     #def recipe_cost(self, recipe):

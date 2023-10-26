@@ -1,6 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Django Delights
 Caffe{% endblock %} {% block content %}
-<h2>Revenue and profit</h2>
+<h2>
+  <img
+    src="{% static 'inventory/profit.png' %}"
+    alt="ingredient"
+    width="50px"
+  />
+  Revenue and profit
+</h2>
 <table>
   <thead>
     <tr class="table-heading">
