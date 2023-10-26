@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from .forms import IngredientCreateForm, MenuItemCreateForm, RecipeRequirementCreateForm, PurchaseCreateForm
 from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.db.models import Sum
 
 # Create your views here.
@@ -30,6 +30,11 @@ class IngredientCreate(CreateView):
     model = Ingredient
     form_class = IngredientCreateForm
     template_name = "inventory/add_ingredient.html"
+
+class UpdateIngredientView(UpdateView):
+    model = Ingredient
+    form_class = IngredientCreateForm
+    template_name = "inventory/update_ingredient.html"
     
 class MenuView(ListView):
     model = MenuItem
