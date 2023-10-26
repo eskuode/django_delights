@@ -29,7 +29,6 @@ body {
   border-style: solid;
   border-color: grey;
   border-radius: 5px;
-  text-decoration: none;
 }
 
 table {
@@ -57,9 +56,6 @@ tbody {
 
 .dessert-name {
   font-weight: bold;
-}
-
-dd {
 }
 
 .report {

@@ -2,12 +2,13 @@
 Caffe{% endblock %} {% block content %}
 <h2>Igredients Inventory</h2>
 <table>
-  <thead class="table-heading">
-    <tr>
+  <thead>
+    <tr class="table-heading">
       <th>Ingredient</th>
       <th>Quantity</th>
       <th>Unit</th>
       <th>Price per unit</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +18,12 @@ Caffe{% endblock %} {% block content %}
       <td>{{ ingr.quantity }}</td>
       <td>{{ ingr.unit }}</td>
       <td>{{ ingr.unit_price }}</td>
+      <td><a href="{% url 'ingredientupdate' ingr.id %}">Update</a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+<div>
+  <a href="{% url 'ingredientcreate' %}">➕ Add New Ingredient</a>
+</div>
 {% endblock %}
