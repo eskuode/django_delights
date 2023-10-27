@@ -62,10 +62,13 @@ tbody {
   padding: 3px;
 }
 
-.menu-item {
-  border: solid;
-  border-color: #38220f;
-  margin: 2px;
+.menu-list {
+  vertical-align: middle;
+  padding-left: 30px;
+}
+
+.picture {
+  float: right;
 }
 
 .dessert-name {
@@ -96,6 +99,7 @@ tbody {
   border: 1px;
   border-style: solid;
   border-color: #634832;
+
   border-radius: 5px;
   padding: 3px;
   text-decoration: none;

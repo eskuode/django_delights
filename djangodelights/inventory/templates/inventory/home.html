@@ -5,23 +5,19 @@ Caffe{% endblock %} {% block content %}
     Welcome to another day of Django Delights Caffe shift! Today we are serving:
   </h3>
   <table>
-    <thead>
-      <tr class="menu-item">
-        <th>Desserts and Hotdrinks</th>
-      </tr>
-    </thead>
-    <tbody>
+    <tr>
+      <th>Desserts and Hotdrinks</th>
+      <th></th>
+    </tr>
+    <tr class="menu-list">
       {% for menu_item in menu %}
-      <tr class="menu-item">
-        <td>{{ menu_item.title }}</td>
-        <td>
-          {% if menu_item.image %}
-          <img src="{{ menu_item.image.url }}" width="100px" />
-          {% endif %}
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
+      <td>{{ menu_item.title }}</td>
+      {% if menu_item.image %}
+      <td class="picture">
+        <img src="{{ menu_item.image.url }}" width="100px" />
+      </td>
+    </tr>
+    {% endif %} {% endfor %}
   </table>
 </body>
 {% endblock %}

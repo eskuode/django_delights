@@ -4,15 +4,13 @@ from datetime import datetime
 
 # Create your models here.
 class Ingredient(models.Model):
-    OUNCE = "ounces"
-    LBS = "lbs"
-    GRAMS = "grams"
+    ML = "ml"
+    GRAMS = "g"
     UNITS = "units"
     OTHER = "other"
     UNIT_TYPE_CHOICES = [
-        (OUNCE, "ounces"),
-        (LBS, "lbs"),
-        (GRAMS, "grams"),
+        (ML, "ml"),
+        (GRAMS, "g"),
         (UNITS, "units"),
         (OTHER, "other"),
     ]
