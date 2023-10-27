@@ -29,6 +29,7 @@ class MenuItem(models.Model):
   price = models.FloatField(default=0.0, verbose_name="Price")
   def __str__(self):
     return self.title + " " + str(self.price)
+  
   def get_absolute_url(self):
     return "/menu/list"
   
@@ -36,11 +37,13 @@ class RecipeRequirement(models.Model):
   menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE, verbose_name="Menu Item")
   ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, verbose_name="Ingrediet")
   quantity = models.FloatField(default=0.0, verbose_name="Quantity")
+  cost = models.FloatField(...)
+
+  def save(self):
+    self.cost = self.quantity * self.ingredient.unit_price
+    return super(example, self).save()
   def __str__(self):
     return self.menu_item.title + ": " + self.ingredient.name + "/" + str(self.quantity)
-  @property
-  def cost(self):
-    return self.quantity * self.ingredient.unit_price
   def get_absolute_url(self):
     return "/menu/list"
 

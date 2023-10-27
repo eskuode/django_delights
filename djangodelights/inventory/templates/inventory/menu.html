@@ -29,7 +29,7 @@ Caffe{% endblock %} {% block content %}
   </tbody>
 </table>
 <div>
-  <a href="{% url 'menucreate' %}">➕ Add New Menu Item</a>
-  <a href="{% url 'recipecreate' %}">➕ Add Recipe for Menu Item</a>
+  <a class="add" href="{% url 'menucreate' %}">➕ Add New Menu Item</a><br />
+  <a class="add" href="{% url 'recipecreate' %}">➕ Add Recipe for Menu Item</a>
 </div>
 {% endblock %}

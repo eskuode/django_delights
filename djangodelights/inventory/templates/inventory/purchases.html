@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% load static %}{% block title %}Django Delights
 Caffe{% endblock %} {% block content %}
 <h2>Purchases made this month:</h2>
-<div class="add">
-  <a href="{% url 'purchasecreate' %}">➕ Add New Purchase</a>
+<div>
+  <a  class="add" href="{% url 'purchasecreate' %}">➕ Add New Purchase</a>
 </div>
 <table>
   <thead>

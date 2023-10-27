@@ -44,6 +44,11 @@ class MenuView(ListView):
     def get_context_data(self):
        context = super().get_context_data()
        context["menu"] = MenuItem.objects.all()   
+       item_cost = 0
+       for menu_item in MenuItem.objects.all():
+           for recipe in menu_item.menu_item.reciperequirement_set.filter(menu_item__title=menu_item.title).values():
+               item_cost += recipe.cost
+       context["item_cost"] = item_cost
        return context
     
 class CreateMenuView(CreateView):
