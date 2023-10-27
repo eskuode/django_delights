@@ -27,6 +27,7 @@ class Ingredient(models.Model):
 class MenuItem(models.Model):
   title = models.CharField(max_length=50, verbose_name="Menu Item")
   price = models.FloatField(default=0.0, verbose_name="Price")
+  image  = models.ImageField(blank=True, upload_to="static/inventory")
   def __str__(self):
     return self.title + " " + str(self.price)
   

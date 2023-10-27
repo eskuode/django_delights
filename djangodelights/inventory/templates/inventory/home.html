@@ -6,18 +6,14 @@ Caffe{% endblock %} {% block content %}
   </h3>
   <table>
     <thead>
-      <tr>
+      <tr class="menu-item">
         <th>Desserts and Hotdrinks</th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       {% for menu_item in menu %}
-      <tr>
+      <tr class="menu-item">
         <td>{{ menu_item.title }}</td>
-        <td></td>
-        <td></td>
       </tr>
       {% endfor %}
     </tbody>
