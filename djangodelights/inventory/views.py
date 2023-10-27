@@ -4,8 +4,8 @@ from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from .forms import IngredientCreateForm, MenuItemCreateForm, RecipeRequirementCreateForm, PurchaseCreateForm
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView
-from django.db import transaction
-from django.db.models import Sum, F
+from django.db.models import Sum, F, Count
+
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -44,12 +44,8 @@ class MenuView(ListView):
     def get_context_data(self):
        context = super().get_context_data()
        context["menu"] = MenuItem.objects.all()   
-       item_cost = 0
-       for menu_item in MenuItem.objects.all():
-           for recipe in menu_item.menu_item.reciperequirement_set.filter(menu_item__title=menu_item.title).values():
-               item_cost += recipe.cost
-       context["item_cost"] = item_cost
        return context
+     
     
 class CreateMenuView(CreateView):
     model = MenuItem
@@ -112,7 +108,8 @@ class ProfitView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["ingredients"] = Ingredient.objects.all()
-        context["menu"] = MenuItem.objects.all()
+        menu = MenuItem.objects.all()
+        context["menu"] = menu
         context["recipes"] = RecipeRequirement.objects.all()
         context["purchases"] = Purchase.objects.all()
         revenue = Purchase.objects.aggregate(
@@ -124,7 +121,12 @@ class ProfitView(TemplateView):
         context["revenue"] = revenue
         context["total_cost"] = total_cost
         context["profit"] = revenue - total_cost
-    
+        item_cost = [item.reciperequirement_set.aggregate(cost=Sum(F('quantity') * F('ingredient__unit_price'))) for item in MenuItem.objects.all()]
+        context['item_cost'] = item_cost
+        purchase_count = [item.purchase_set.aggregate(total=Count('menu_item')) for item in MenuItem.objects.all()]
+        context['purchase_count'] = purchase_count
+        item_report = zip(purchase_count, item_cost, menu)
+        context['item_report'] = item_report
         return context
     
     #def recipe_cost(self, recipe):

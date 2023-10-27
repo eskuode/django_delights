@@ -11,16 +11,19 @@ Caffe{% endblock %} {% block content %}
 <table>
   <thead>
     <tr class="table-heading">
-      <th>Dessert</th>
+      <th>Desserts and Hotdrinks</th>
       <th>Price</th>
+      <th>Cost</th>
+      <th>Quantity ordered</th>
     </tr>
   </thead>
   <tbody>
-    {% for menu_item in menu %}
+    {% for purchase, item, menu_item in item_report %}
     <tr class="table-content">
       <td>{{ menu_item.title }}</td>
       <td>£{{ menu_item.price }}</td>
-      <td>£{{ item_cost }}</td>
+      <td>£{{ item.cost|floatformat:2 }}</td>
+      <td>{{ purchase.total }}</td>
     </tr>
     {% endfor %}
   </tbody>
