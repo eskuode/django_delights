@@ -28,6 +28,11 @@ Caffe{% endblock %} {% block content %}
     {% endfor %}
   </tbody>
 </table>
+<div>
+  From: <input type="date" name="fromdate" /> To:
+  <input type="date" name="todate" />
+  <input type="submit" value="Search" />
+</div>
 <table class="report">
   <tr>
     <td class="report-metrix">Revenue</td>

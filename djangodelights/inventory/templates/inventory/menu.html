@@ -4,10 +4,11 @@ Caffe{% endblock %} {% block content %}
   <img src="{% static 'inventory/menu.png' %}" alt="ingredient" width="80px" />
   Menu
 </h2>
-<table>
+<table class=>
   <thead>
     <tr class="table-heading">
       <th>Dessert and Hotdrinks</th>
+      <th></th>
       <th>Price</th>
     </tr>
   </thead>
@@ -18,10 +19,25 @@ Caffe{% endblock %} {% block content %}
         <dl>
           <dt class="dessert-name">{{ menu_item.title }}</dt>
           {% for recipe in menu_item.reciperequirement_set.all %}
-          <dd>{{ recipe.ingredient.name }}</dd>
-          {% endfor %}
+          {% for ingredient in ingredients %}
+          {% if ingredient.name == recipe.ingredient.name and ingredient.quantity < recipe.quantity %}
+            <dd style="color: red">{{ recipe.ingredient.name }}</dd>
+          {% elif ingredient.name == recipe.ingredient.name and ingredient.quantity >= recipe.quantity %}
+            <dd style="color: black">{{ recipe.ingredient.name }}</dd>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
         </dl>
       </td>
+      <td style="color: red">
+      {% for recipe in menu_item.reciperequirement_set.all %}
+      {% for ingredient in ingredients %}
+      {% if ingredient.name == recipe.ingredient.name and ingredient.quantity < recipe.quantity %}
+         Run out of {{ recipe.ingredient.name }}. 
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </td>
       <td>£{{ menu_item.price }}</td>
     </tr>
     {% endfor %}
@@ -29,7 +45,7 @@ Caffe{% endblock %} {% block content %}
   </tbody>
 </table>
 <div>
-  <a class="add" href="{% url 'menucreate' %}">➕ Add New Menu Item</a><br />
+  <a class="add" href="{% url 'menucreate' %}">➕ Add New Menu Item</a><br /><br/>
   <a class="add" href="{% url 'recipecreate' %}">➕ Add Recipe for Menu Item</a>
 </div>
 {% endblock %}

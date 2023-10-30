@@ -9,12 +9,12 @@ Caffe{% endblock %} {% block content %}
       <th>Desserts and Hotdrinks</th>
       <th></th>
     </tr>
-    <tr class="menu-list">
+    <tr>
       {% for menu_item in menu %}
-      <td>{{ menu_item.title }}</td>
+      <td class="menu-list">{{ menu_item.title }}</td>
       {% if menu_item.image %}
       <td class="picture">
-        <img src="{{ menu_item.image.url }}" width="100px" />
+        <img src="{{ menu_item.image.url }}" width="120px" />
       </td>
     </tr>
     {% endif %} {% endfor %}
