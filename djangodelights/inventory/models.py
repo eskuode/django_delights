@@ -33,7 +33,7 @@ class Ingredient(models.Model):
         )
 
     def get_absolute_url(self):
-        return "/ingredients/list"
+        return "/ingredients"
 
 
 class MenuItem(models.Model):
@@ -45,7 +45,7 @@ class MenuItem(models.Model):
         return self.title + " " + str(self.price)
 
     def get_absolute_url(self):
-        return "/menu/list"
+        return "/menu"
 
 
 class RecipeRequirement(models.Model):
@@ -67,7 +67,7 @@ class RecipeRequirement(models.Model):
         )
 
     def get_absolute_url(self):
-        return "/menu/list"
+        return "/menu"
 
 
 class Purchase(models.Model):
@@ -82,7 +82,7 @@ class Purchase(models.Model):
         return self.menu_item.title + " " + str(self.timestamp)
 
     def get_absolute_url(self):
-        return "/purchases/list"
+        return "/purchases"
 
 
 # Create your models here.
