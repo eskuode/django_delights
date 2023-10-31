@@ -10,8 +10,6 @@ from .forms import (
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import CreateView, UpdateView
 from django.db.models import Sum, F, Count
-import calendar
-from calendar import HTMLCalendar
 
 
 # Create your views here.
@@ -100,6 +98,25 @@ class CreatePurchaseView(CreateView):
     form_class = PurchaseCreateForm
     template_name = "inventory/add_purchase.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["ingredients"] = Ingredient.objects.all()
+        context["menu"] = MenuItem.objects.all()
+        context["recipes"] = RecipeRequirement.objects.all()
+        menu_item_list = []
+        for menu_item in MenuItem.objects.all():
+            for recipe in menu_item.reciperequirement_set.all():
+                if (
+                    recipe.quantity <= recipe.ingredient.quantity
+                    and recipe.menu_item not in menu_item_list
+                ):
+                    menu_item_list.append(recipe.menu_item)
+                elif recipe.quantity > recipe.ingredient.quantity:
+                    menu_item_list.remove(recipe.menu_item)
+                    break
+        context["menu_item"] = menu_item_list
+        return context
+
     def post(self, request):
         menu_item_id = request.POST["menu_item"]
         menu_item = MenuItem.objects.get(pk=menu_item_id)
@@ -151,15 +168,3 @@ class ProfitView(TemplateView):
         item_report = zip(purchase_count, item_cost, menu)
         context["item_report"] = item_report
         return context
-
-    def showresults(request):
-        if request.method == "POST":
-            fromdate = request.POST.get("fromdate")
-            todate = request.POST.get("todate")
-            displaydata = Purchase.objects.filter(timestamp__range=[fromdate, todate])
-        return render(request, "profit.html", {"data": displaydata})
-
-    # def recipe_cost(self, recipe):
-    ##for menu_item in MenuItem.objects.all():
-    # for recipe in menu_item.reciperequirement_set.all():
-    # return recipe.aggregate(Sum('cost'))

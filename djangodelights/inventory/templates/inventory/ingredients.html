@@ -26,7 +26,9 @@ Caffe{% endblock %} {% block content %}
       <td>{{ ingr.quantity }}</td>
       <td>{{ ingr.unit }}</td>
       <td>{{ ingr.unit_price }}</td>
-      <td><a class="update" href="{% url 'ingredientupdate' ingr.id %}">Update</a></td>
+      <td>
+        <a class="update" href="{% url 'ingredientupdate' ingr.id %}">Update</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
