@@ -21,6 +21,9 @@
         />
         Django Delights Caffe
       </div>
+      {% if user.is_authenticated %}
+      <a class="logout" href="/logout">Logout</a>
+      {% endif %}
       <nav class="navbar">
         <a class="nav-item" href="{% url 'home' %}">Home</a>
         <a class="nav-item" href="{% url 'ingredients' %}">Ingredients</a>

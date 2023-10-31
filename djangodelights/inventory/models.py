@@ -66,11 +66,6 @@ class RecipeRequirement(models.Model):
             + str(self.quantity)
         )
 
-    @property
-    def enouth(self):
-        if self.quantity < self.ingredient.quantity:
-            return True
-
     def get_absolute_url(self):
         return "/menu/list"
 
