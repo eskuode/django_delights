@@ -135,7 +135,7 @@ class CreatePurchaseView(LoginRequiredMixin, CreateView):
             required_ingredient.save()
 
         purchase.save()
-        return redirect("/purchases/list")
+        return redirect("/purchases")
 
 
 class ProfitView(LoginRequiredMixin, TemplateView):
