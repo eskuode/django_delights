@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Django Delights
 Caffe{% endblock %} {% block content %}
 <body>
+  {% if user.is_authenticated %}
+  <h3>Hi, {{ user.username|title }}!</h3>
+  {% endif %}
   <h3 class="greeting">
     Welcome to another day of Django Delights Caffe shift! Today we are serving:
   </h3>
@@ -11,7 +14,7 @@ Caffe{% endblock %} {% block content %}
     </tr>
     <tr>
       {% for menu_item in menu %}
-      <td class="menu-list">{{ menu_item.title }}</td>
+      <td class="menu-list">{{ menu_item.title|title }}</td>
       {% if menu_item.image %}
       <td class="picture">
         <img src="{{ menu_item.image.url }}" width="120px" />

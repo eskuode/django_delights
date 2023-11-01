@@ -33,7 +33,7 @@ Caffe{% endblock %} {% block content %}
       {% for recipe in menu_item.reciperequirement_set.all %}
       {% for ingredient in ingredients %}
       {% if ingredient.name == recipe.ingredient.name and ingredient.quantity < recipe.quantity %}
-         Run out of {{ recipe.ingredient.name }}. 
+      ⚠ Run out of {{ recipe.ingredient.name }}. 
       {% endif %}
       {% endfor %}
       {% endfor %}

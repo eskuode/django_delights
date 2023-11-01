@@ -18,6 +18,13 @@ body {
   padding: 10px;
 }
 
+.logout {
+  float: right;
+  text-decoration: none;
+  padding: 10px;
+  margin-right: 20px;
+}
+
 a:hover {
   background-color: #dbc1ac;
 }
